@@ -4,17 +4,17 @@
 		"dockerfile": "Dockerfile",
 		"context": "..",
 		"args": { 
-			"VARIANT": "3.12"
+			"VARIANT": "2-alpine"
 		}
 	},
 	// Default path to open when attaching to a new container.
 	//"workspaceFolder": "/home/yubin/builds/mygit/ex_ruby",
-	"mounts": [
-		"source=/home/yubin/builds/mygit,target=/workspaces/mygit,type=bind,consistency=cached"
-	],
-
+	// "mounts": [
+	// 	"source=/home/yubin/builds/mygit,target=/workspaces/mygit,type=bind,consistency=cached"
+	// ],
 	// Set *default* container specific settings.json values on container create.
-	"settings": { 
+	"settings": {
+		"ruby.rubocop.executePath":"/usr/local/bundle/bin/",
 		"terminal.integrated.shell.linux": "/bin/bash"
 	},
 
@@ -30,5 +30,5 @@
 	// "postCreateCommand": "pip3 install --user -r requirements.txt",
 
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "vscode"
+	//"remoteUser": "vscode"
 }
