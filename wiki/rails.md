@@ -16,11 +16,16 @@
 *  init db => rails db:migrate
 *  開 service => rails s(server)
 *  http://localhost:3000/users
+- scaffold 在 欄位後面可以在 ":" 標注型態，:references 可以直接 跟 User model 進行關聯
+```shell
+rails g scaffold Post title content:text is_available:boolean user:references
+```
 
 # Model/MVC
 *  控制DB的 interface
 *  在 rails 裡面可以在 app/models/*.rb 去設定 models 的功能與關係，一樣有命名規則
 *  
+
 ## ApplicationRecord
 *  關聯性是在 ApplicationRecord > models 的 has_many 跟 belongs_to 去設定
 *  可以用 model.first 取用第一個資料，然後就可以用.{model_name} 來 access 關聯的table資料
@@ -70,6 +75,7 @@ end
     *  雖然有定義要連 PostsController 的相關 function, 但在開啟routes並不會去檢查相關的controller 狀態
     *  有 redirect def 去做轉址
     *  另外順序是先寫的mapping 會先啟動，後面有相容的 mapping 就會失效
+    - resources :posts 就是直接用慣例去對應
 
 *  可以用 rails routes 去檢查系統中可提供的 routes 對應
 *  在 /public 中的 靜態檔案都可以直接從 "/" 以下去 access, 不需要 routes

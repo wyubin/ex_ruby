@@ -8,8 +8,6 @@ while $i < $num  do
   $i +=1
 end
 
-module Trig
-  PI=3.14
-  def Trig.sin(x)
-  end
-end
+## variables and constant
+a, _ = 1, 2
+puts(a)

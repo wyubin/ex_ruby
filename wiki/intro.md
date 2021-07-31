@@ -1,3 +1,6 @@
+# ref
+[link](https://railsbook.tw/chapters/02-environment-setup.html)
+
 # introduction
 基本需要熟悉的語法
 
