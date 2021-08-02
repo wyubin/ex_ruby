@@ -10,4 +10,7 @@ end
 
 ## variables and constant
 a, _ = 1, 2
+c,b = [3,4]
 puts(a)
+puts('b=%d' % b)
+puts("c=#{c}")
