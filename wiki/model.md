@@ -52,4 +52,28 @@ Candidate.find_by(id: 1)
     end
   end
   ```
-  - where，可用
+  - where，可用sql描述或是 key:val 的形式作為參數
+  ```ruby
+  Candidate.where("age > 18", gender: "female")
+  # 也可以用 chain 連結起來
+  Candidate.where("age > 18").where(gender: "female")
+  ```
+  - order，欲排序的欄位作為 simbol 輸入，或是以 key:val 定義排序方式
+  ```ruby
+  Candidate.order(:age)         # 按照年齡大小，預設是由小排到大
+  Candidate.order(age: :desc)   # 按照年齡大小，由大排到小
+  ```
+  - limit，參數為 int
+  - 計算功能(count, average, sum, maximum, minimum)
+
+# update
+有幾種方式用來更新
+- save，從 model的intance 直接save 更新
+```ruby
+candidate.name = "剪彩倫"
+candidate.save
+```
+- update_attribute，指定單個欄位更新指定值，會跳過 validation
+```ruby
+candidate.update_attribute(:name, "剪彩倫")
+```
