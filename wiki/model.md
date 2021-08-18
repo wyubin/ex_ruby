@@ -73,7 +73,39 @@ Candidate.find_by(id: 1)
 candidate.name = "剪彩倫"
 candidate.save
 ```
+- update/update_attributes，更新多個欄位值
+```ruby
+candidate.update(name: "剪彩倫", age: 20)
+```
 - update_attribute，指定單個欄位更新指定值，會跳過 validation
 ```ruby
 candidate.update_attribute(:name, "剪彩倫")
+```
+- update_all, 為類別方法，可直接更新整個table 的數值
+```ruby
+Candidate.update_all(name: "剪彩倫", age: 18)
+```
+
+# delete
+- delete，執行sql 的delete 描述，但不會有後續的 callback，是類別方法也是instance 方法
+```ruby
+candidate.delete
+Candidate.delete(1) # 刪除id=1 的資料
+```
+- destroy，執行包含callback 的 delete 流程
+```ruby
+candidate.destroy
+Candidate.destroy(1) # 刪除id=1 的資料
+Candidate.destroy_all("age < 18") # 刪除所有未成年的候選人
+```
+
+# scope
+有點像是將特定搜尋轉成可讀的關鍵字，並且也可以接連使用，可以在 model 裡面做下面這樣的定義
+- default_scope 則是只要用到此 model 都會套用的 sql 方法
+```ruby
+class Product < ActiveRecord::Base
+  default_scope { order('id DESC') }
+  scope :available, -> { where(is_available: true) }
+  scope :price_over, ->(p) { where(["price > ?", p]) }
+end
 ```
